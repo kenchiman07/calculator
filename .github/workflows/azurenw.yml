@@ -15,6 +15,7 @@ jobs:
       contents: write
     runs-on:
       group: run-azure
+      labels: run-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
