@@ -19,3 +19,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      - name: azurecli install
+        shell: bash
+        run: curl -L https://aka.ms/InstallAzureCli | sudo bash
+
+      - name: show storage
+        shell: bash
+        run: az storage account blob-service-properties show -n stjobsample -g jobs-sample
