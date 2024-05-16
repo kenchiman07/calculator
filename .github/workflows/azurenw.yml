@@ -22,7 +22,11 @@ jobs:
 
       - name: azurecli install
         shell: bash
-        run: curl -L https://aka.ms/InstallAzureCli | sudo bash
+        run: |
+          echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+          curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+          sudo apt update
+          sudo apt install azure-cli
 
       - name: azure login
         shell: bash
